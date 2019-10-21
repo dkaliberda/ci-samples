@@ -6,7 +6,7 @@ metadata:
 data:
   entrypoint.sh: |-
     #!/bin/bash
-    # Your config map for docker run kubenetes
+    katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"
 ---
 apiVersion: v1
 kind: Pod
