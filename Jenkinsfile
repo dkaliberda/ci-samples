@@ -9,6 +9,12 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
+                script {
+                    def testResults = findFiles(glob: 'build/reports/**/*.xml')
+                    for(xml in testResults) {
+                        touch xml.getPath()
+                    }
+                }
             }
         }
     }
